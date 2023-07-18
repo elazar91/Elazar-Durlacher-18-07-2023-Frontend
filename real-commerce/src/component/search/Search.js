@@ -1,4 +1,3 @@
-import CityCard from "../CityCard/CityCard";
 import style from "./Search.module.scss";
 
 const Search = ({ weatherData, term, results }) => {
@@ -32,11 +31,6 @@ const Search = ({ weatherData, term, results }) => {
       </div>
 
       {results.searchResults.length === 0 && <p>No results found.</p>}
-      <ul>
-        {results.searchResults.map((item) => (
-          <CityCard item={item} key={item.City} />
-        ))}
-      </ul>
     </div>
   );
 };

@@ -1,3 +1,21 @@
+.li {
+  width: 50%;
+  height: 100px;
+  list-style: none;
+  position: relative;
+  margin: 10px 0;
+  padding: 1rem;
+  background-color: rgba(238, 240, 241, 0.5);
+  border: 1px solid rgba(172, 175, 176, 0.3);
+  border-radius: 12px;
+
+  .details {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+  }
+}
+
 .delete {
   border: none;
   background: url("../../assets/delete-307.svg");
@@ -13,30 +31,11 @@
 }
 
 .notFavorite {
-  border: none;
-  background: url("../../assets/add-to-favorites-icon.svg");
-  height: 16px;
-  width: 16px;
+  border: 2px solid black;
+  padding: 8px;
+  border-radius: 8px;
   cursor: pointer;
+  background: rgba(155, 245, 152, 0.443);
   align-self: flex-end;
   margin-bottom: 10px;
-}
-
-.favorite {
-  border: none;
-  background: url("../../assets/red-heart-icon.svg");
-  height: 13px;
-  width: 15px;
-  cursor: pointer;
-  align-self: flex-end;
-  margin-bottom: 10px;
-}
-.li {
-  list-style: none;
-  position: relative;
-  margin: 0;
-  padding: 1rem;
-  background-color: rgba(238, 240, 241, 0.5);
-  border: 1px solid rgba(172, 175, 176, 0.3);
-  border-radius: 12px;
 }
