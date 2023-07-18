@@ -25,7 +25,7 @@
   gap: 0.5rem;
 }
 
-.description p {
+.description li {
   position: relative;
   margin: 0;
   padding: 1rem;
@@ -161,6 +161,10 @@
 
   .description a {
     padding: 1rem;
+  }
+
+  .description li {
+    list-style: none;
   }
 
   .description p,
