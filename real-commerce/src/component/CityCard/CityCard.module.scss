@@ -1,0 +1,42 @@
+.delete {
+  border: none;
+  background: url("../../assets/delete-307.svg");
+  height: 16px;
+  width: 16px;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-bottom: 10px;
+
+  &:hover {
+    fill: black;
+  }
+}
+
+.notFavorite {
+  border: none;
+  background: url("../../assets/add-to-favorites-icon.svg");
+  height: 16px;
+  width: 16px;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-bottom: 10px;
+}
+
+.favorite {
+  border: none;
+  background: url("../../assets/red-heart-icon.svg");
+  height: 13px;
+  width: 15px;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-bottom: 10px;
+}
+.li {
+  list-style: none;
+  position: relative;
+  margin: 0;
+  padding: 1rem;
+  background-color: rgba(238, 240, 241, 0.5);
+  border: 1px solid rgba(172, 175, 176, 0.3);
+  border-radius: 12px;
+}
