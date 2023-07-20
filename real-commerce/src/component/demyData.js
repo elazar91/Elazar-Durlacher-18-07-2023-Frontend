@@ -10,7 +10,6 @@ const weatherData = [
     HasPrecipitation: false,
     PrecipitationType: null,
     IsDayTime: true,
-    isFavorite: false,
     Temperature: {
       Metric: {
         Value: 28.5,
@@ -35,7 +34,6 @@ const weatherData = [
     HasPrecipitation: true,
     PrecipitationType: "Rain",
     IsDayTime: true,
-    isFavorite: false,
     Temperature: {
       Metric: {
         Value: 19.2,
@@ -60,7 +58,6 @@ const weatherData = [
     HasPrecipitation: false,
     PrecipitationType: null,
     IsDayTime: false,
-    isFavorite: false,
     Temperature: {
       Metric: {
         Value: 17.9,
@@ -85,7 +82,6 @@ const weatherData = [
     HasPrecipitation: false,
     PrecipitationType: null,
     IsDayTime: false,
-    isFavorite: false,
     Temperature: {
       Metric: {
         Value: 26.3,
@@ -110,7 +106,6 @@ const weatherData = [
     HasPrecipitation: false,
     PrecipitationType: null,
     IsDayTime: true,
-    isFavorite: true,
     Temperature: {
       Metric: {
         Value: 24.8,
@@ -135,7 +130,6 @@ const weatherData = [
     HasPrecipitation: false,
     PrecipitationType: null,
     IsDayTime: true,
-    isFavorite: false,
     Temperature: {
       Metric: {
         Value: 31.2,
@@ -160,7 +154,6 @@ const weatherData = [
     HasPrecipitation: true,
     PrecipitationType: "Rain",
     IsDayTime: true,
-    isFavorite: false,
     Temperature: {
       Metric: {
         Value: 16.5,
@@ -185,7 +178,6 @@ const weatherData = [
     HasPrecipitation: true,
     PrecipitationType: "Mist",
     IsDayTime: true,
-    isFavorite: false,
     Temperature: {
       Metric: {
         Value: 12.1,
@@ -210,7 +202,6 @@ const weatherData = [
     HasPrecipitation: false,
     PrecipitationType: null,
     IsDayTime: false,
-    isFavorite: false,
     Temperature: {
       Metric: {
         Value: 29.7,
@@ -235,7 +226,6 @@ const weatherData = [
     HasPrecipitation: false,
     PrecipitationType: null,
     IsDayTime: true,
-    isFavorite: false,
     Temperature: {
       Metric: {
         Value: 40.5,

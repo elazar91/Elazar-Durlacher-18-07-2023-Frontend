@@ -1,17 +1,47 @@
-import React from "react";
 import style from "./CityCard.module.scss";
 
-export default function CityCard({ item }) {
+export default function CityCard({ item, favorites }) {
+  const handleAddToFavorites = () => {
+    if (favorites && !favorites.favorites.includes(item.isFavorite)) {
+      favorites.setFavorites([...favorites.favorites, item]);
+      item.isFavorite = true;
+    } else {
+      favorites?.setFavorites([item]);
+    }
+  };
+
+  const handleRemoveFromFavorites = (itemToRemove) => {
+    const updatedFavorites = favorites.favorites.filter(
+      (city) => city.id !== itemToRemove.id
+    );
+    itemToRemove.isFavorite = false;
+    favorites.setFavorites(updatedFavorites);
+  };
+
   return (
     <li className={style.li}>
-      <div>
-        <h3 className={style.h3}>
-          {item.City}, {item.Country}
-        </h3>
-        {item.isFavorite ? (
-          <div className={style.delete}></div>
+      <div className={style.cardHeader}>
+        <div>
+          <h3 className={style.h3}>{item.City}</h3>
+          <h3>{item.Country}</h3>
+        </div>
+        {item?.isFavorite ? (
+          <div
+            className={`${style.delete} ${style.button}`}
+            onClick={() => handleRemoveFromFavorites(item)}
+          >
+            remove from favorites
+          </div>
         ) : (
-          <div className={style.notFavorite}>add to favorites</div>
+          <div
+            className={`${style.notFavorite} ${style.button}`}
+            onClick={() => {
+              handleAddToFavorites();
+              console.log(item);
+            }}
+          >
+            add to favorites
+          </div>
         )}
       </div>
       <div className={style.details}>

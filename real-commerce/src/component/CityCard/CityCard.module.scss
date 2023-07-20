@@ -1,6 +1,5 @@
 .li {
   width: 50%;
-  height: 100px;
   list-style: none;
   position: relative;
   margin: 10px 0;
@@ -9,6 +8,11 @@
   border: 1px solid rgba(172, 175, 176, 0.3);
   border-radius: 12px;
 
+  .cardHeader {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .details {
     display: flex;
     justify-content: space-between;
@@ -16,26 +20,19 @@
   }
 }
 
-.delete {
-  border: none;
-  background: url("../../assets/delete-307.svg");
-  height: 16px;
-  width: 16px;
-  cursor: pointer;
-  align-self: flex-end;
-  margin-bottom: 10px;
-
-  &:hover {
-    fill: black;
-  }
-}
-
-.notFavorite {
+.button {
   border: 2px solid black;
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
-  background: rgba(155, 245, 152, 0.443);
   align-self: flex-end;
   margin-bottom: 10px;
+}
+
+.notFavorite {
+  background: rgba(155, 245, 152, 0.443);
+}
+
+.delete {
+  background: rgba(244, 57, 29, 0.668);
 }

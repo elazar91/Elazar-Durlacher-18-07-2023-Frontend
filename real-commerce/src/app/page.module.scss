@@ -4,6 +4,17 @@
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
+
+  .nav {
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+
+    .page {
+      padding-bottom: 5px;
+      border-bottom: 3px solid rgb(167, 167, 167);
+    }
+  }
 }
 
 .description {
