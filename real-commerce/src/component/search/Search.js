@@ -1,11 +1,45 @@
+import React, { useState } from "react";
 import style from "./Search.module.scss";
 
 const Search = ({ weatherData, term, results }) => {
+  const [loading, setLoading] = useState(false);
+
+  // const handleSearch = async (e) => {
+  //   e.preventDefault();
+
+  //   // remove from this fail
+  //   const apiKey = "xZqCPMp7LLmhlDOo64APl3GFPVP29iJ4";
+  //   const query = term.searchTerm;
+
+  //   if (query) {
+  //     try {
+  //       setLoading(true);
+  //       const response = await fetch(
+  //         `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${query}`
+  //       );
+
+  //       if (!response.ok) {
+  //         throw new Error("Failed to fetch data from the AccuWeather API");
+  //       }
+
+  //       const data = await response.json();
+  //       setLoading(false);
+  //       results.setSearchResults(data);
+  //       console.log(data);
+  //     } catch (error) {
+  //       console.error(error);
+  //       setLoading(false);
+  //     }
+  //   } else {
+  //     results.setSearchResults([]);
+  //   }
+  // };
+
   const handleSearch = (e) => {
     e.preventDefault();
 
     const weatherResults = weatherData.filter((item) =>
-      item.City.toLowerCase().includes(term.searchTerm.toLowerCase())
+      item.LocalizedName.toLowerCase().includes(term.searchTerm.toLowerCase())
     );
 
     results.setSearchResults(weatherResults);
@@ -30,7 +64,10 @@ const Search = ({ weatherData, term, results }) => {
         </form>
       </div>
 
-      {results.searchResults.length === 0 && <p>No results found.</p>}
+      {loading && <p>Loading...</p>}
+      {!loading && results.searchResults.length === 0 && (
+        <p>No results found.</p>
+      )}
     </div>
   );
 };

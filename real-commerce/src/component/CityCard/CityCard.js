@@ -1,6 +1,7 @@
 import style from "./CityCard.module.scss";
 
 export default function CityCard({ item, favorites }) {
+  console.log(item);
   const handleAddToFavorites = () => {
     if (favorites && !favorites.favorites.includes(item.isFavorite)) {
       favorites.setFavorites([...favorites.favorites, item]);
@@ -12,7 +13,7 @@ export default function CityCard({ item, favorites }) {
 
   const handleRemoveFromFavorites = (itemToRemove) => {
     const updatedFavorites = favorites.favorites.filter(
-      (city) => city.id !== itemToRemove.id
+      (city) => city.Key !== itemToRemove.Key
     );
     itemToRemove.isFavorite = false;
     favorites.setFavorites(updatedFavorites);
@@ -22,8 +23,8 @@ export default function CityCard({ item, favorites }) {
     <li className={style.li}>
       <div className={style.cardHeader}>
         <div>
-          <h3 className={style.h3}>{item.City}</h3>
-          <h3>{item.Country}</h3>
+          <h3 className={style.h3}>{item.LocalizedName}</h3>
+          <h3>{item.Country.LocalizedName}</h3>
         </div>
         {item?.isFavorite ? (
           <div
@@ -45,8 +46,11 @@ export default function CityCard({ item, favorites }) {
         )}
       </div>
       <div className={style.details}>
-        <p>{item.WeatherText}</p>
-        <p>{item.Temperature.Metric.Value}°C</p>
+        <p>{item.data[0].WeatherText}</p>
+        <p>
+          {item?.data[0].Temperature?.Metric?.Value}{" "}
+          {item?.data[0].Temperature?.Metric?.Unit}
+        </p>
       </div>
     </li>
   );

@@ -1,9 +1,9 @@
 "use client";
 import style from "./page.module.scss";
-import Search from "@/component/search/Search";
-import weatherData from "../component/demyData";
+import Search from "../component/search/Search";
 import CityCard from "../component/CityCard/CityCard";
 import { useState } from "react";
+import weatherData from "../component/demyData";
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -11,6 +11,26 @@ export default function Home() {
   const [selectedCity, setSelectedCity] = useState();
   const [page, setPage] = useState(true);
   const [favorites, setFavorites] = useState([]);
+
+  async function getCurrentConditions(location, apiKey) {
+    try {
+      const response = await fetch(
+        `http://dataservice.accuweather.com/currentconditions/v1/${location.Key}?apikey=${apiKey}`
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch data from the AccuWeather API");
+      }
+
+      const data = await response.json();
+      location.data = data;
+      setSelectedCity(location);
+      return data;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  }
 
   return (
     <main className={style.main}>
@@ -24,11 +44,13 @@ export default function Home() {
       </div>
       <div className={style.description}>
         <div className={style.mainContainer}>
-          <Search
-            weatherData={weatherData}
-            term={{ searchTerm, setSearchTerm }}
-            results={{ searchResults, setSearchResults }}
-          />
+          {page && (
+            <Search
+              weatherData={weatherData}
+              term={{ searchTerm, setSearchTerm }}
+              results={{ searchResults, setSearchResults }}
+            />
+          )}
           {selectedCity && page && (
             <CityCard
               item={selectedCity}
@@ -42,7 +64,7 @@ export default function Home() {
               (city) =>
                 city.isFavorite && (
                   <CityCard
-                    key={city?.id}
+                    key={city.Key}
                     favorites={{ favorites, setFavorites }}
                     item={city}
                   />
@@ -53,11 +75,13 @@ export default function Home() {
           <ul>
             {searchResults.map((item) => (
               <li
+                key={item.Key}
                 className={style.cityName}
-                onClick={() => setSelectedCity(item)}
-                key={item.id}
+                onClick={() =>
+                  getCurrentConditions(item, "xZqCPMp7LLmhlDOo64APl3GFPVP29iJ4")
+                }
               >
-                {item.City}
+                {item.LocalizedName}
               </li>
             ))}
           </ul>
