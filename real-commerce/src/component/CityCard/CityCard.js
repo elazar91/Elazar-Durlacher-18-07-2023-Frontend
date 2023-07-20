@@ -1,7 +1,6 @@
 import style from "./CityCard.module.scss";
 
 export default function CityCard({ item, favorites }) {
-  console.log(item);
   const handleAddToFavorites = () => {
     if (favorites && !favorites.favorites.includes(item.isFavorite)) {
       favorites.setFavorites([...favorites.favorites, item]);
@@ -38,7 +37,6 @@ export default function CityCard({ item, favorites }) {
             className={`${style.notFavorite} ${style.button}`}
             onClick={() => {
               handleAddToFavorites();
-              console.log(item);
             }}
           >
             add to favorites

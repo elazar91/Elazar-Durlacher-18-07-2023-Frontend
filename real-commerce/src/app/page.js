@@ -3,7 +3,6 @@ import style from "./page.module.scss";
 import Search from "../component/search/Search";
 import CityCard from "../component/CityCard/CityCard";
 import { useState } from "react";
-import weatherData from "../component/demyData";
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -11,6 +10,7 @@ export default function Home() {
   const [selectedCity, setSelectedCity] = useState();
   const [page, setPage] = useState(true);
   const [favorites, setFavorites] = useState([]);
+  const apiKey = "xZqCPMp7LLmhlDOo64APl3GFPVP29iJ4";
 
   async function getCurrentConditions(location, apiKey) {
     try {
@@ -42,15 +42,14 @@ export default function Home() {
           favorites
         </div>
       </div>
+      {page && (
+        <Search
+          term={{ searchTerm, setSearchTerm }}
+          results={{ searchResults, setSearchResults }}
+        />
+      )}
       <div className={style.description}>
         <div className={style.mainContainer}>
-          {page && (
-            <Search
-              weatherData={weatherData}
-              term={{ searchTerm, setSearchTerm }}
-              results={{ searchResults, setSearchResults }}
-            />
-          )}
           {selectedCity && page && (
             <CityCard
               item={selectedCity}
@@ -77,9 +76,7 @@ export default function Home() {
               <li
                 key={item.Key}
                 className={style.cityName}
-                onClick={() =>
-                  getCurrentConditions(item, "xZqCPMp7LLmhlDOo64APl3GFPVP29iJ4")
-                }
+                onClick={() => getCurrentConditions(item, apiKey)}
               >
                 {item.LocalizedName}
               </li>
